@@ -1,0 +1,116 @@
+[
+  {
+    "Industry": "Agriculture, Forestry and Fishing",
+    "Current": 296.9,
+    "Future": 294.5,
+    "Growth": -2.4
+  },
+  {
+    "Industry": "Mining",
+    "Current": 231.1,
+    "Future": 236.8,
+    "Growth": 5.6
+  },
+  {
+    "Industry": "Manufacturing",
+    "Current": 907.2,
+    "Future": 869,
+    "Growth": -38.3
+  },
+  {
+    "Industry": "Electricity, Gas, Water and Waste Services",
+    "Current": 127.7,
+    "Future": 118.7,
+    "Growth": -9
+  },
+  {
+    "Industry": "Construction",
+    "Current": "1,103.1",
+    "Future": "1,223.8",
+    "Growth": 120.7
+  },
+  {
+    "Industry": "Wholesale Trade",
+    "Current": 390.3,
+    "Future": 392.2,
+    "Growth": 1.9
+  },
+  {
+    "Industry": "Retail Trade",
+    "Current": "1,228.3",
+    "Future": "1,273.9",
+    "Growth": 45.6
+  },
+  {
+    "Industry": "Accommodation and Food Services",
+    "Current": 872.2,
+    "Future": 969.8,
+    "Growth": 97.6
+  },
+  {
+    "Industry": "Transport, Postal and Warehousing",
+    "Current": 616.2,
+    "Future": 656.5,
+    "Growth": 40.3
+  },
+  {
+    "Industry": "Information Media and Telecommunications",
+    "Current": 208.3,
+    "Future": 215.2,
+    "Growth": 6.9
+  },
+  {
+    "Industry": "Financial and Insurance Services",
+    "Current": 435.1,
+    "Future": 459.7,
+    "Growth": 24.6
+  },
+  {
+    "Industry": "Rental, Hiring and Real Estate Services",
+    "Current": 212.4,
+    "Future": 230.3,
+    "Growth": 18
+  },
+  {
+    "Industry": "Professional, Scientific and Technical Services",
+    "Current": "1,014.2",
+    "Future": "1,140.6",
+    "Growth": 126.4
+  },
+  {
+    "Industry": "Administrative and Support Services",
+    "Current": 413.3,
+    "Future": 448.2,
+    "Growth": 34.9
+  },
+  {
+    "Industry": "Public Administration and Safety",
+    "Current": 807.1,
+    "Future": 882.1,
+    "Growth": 75
+  },
+  {
+    "Industry": "Education and Training",
+    "Current": 968.5,
+    "Future": "1,084.7",
+    "Growth": 116.2
+  },
+  {
+    "Industry": "Health Care and Social Assistance",
+    "Current": "1,560.4",
+    "Future": "1,810.9",
+    "Growth": 250.5
+  },
+  {
+    "Industry": "Arts and Recreation Services",
+    "Current": 215.2,
+    "Future": 236.5,
+    "Growth": 21.4
+  },
+  {
+    "Industry": "Other Services",
+    "Current": 490.5,
+    "Future": 502.8,
+    "Growth": 12.3
+  }
+]

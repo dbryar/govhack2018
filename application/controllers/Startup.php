@@ -80,7 +80,7 @@ class Startup extends CI_Controller {
     public function chat() {
         // set the intraction preference to chat and head back to the referring page (or home if not a referral)
         $this->session->preference = 'chat';
-        if ($this->agent->is_referral()) {
+        if($this->agent->referrer()) {
             redirect($this->agent->referrer());
         } else {
             $data = [
@@ -96,7 +96,7 @@ class Startup extends CI_Controller {
     public function forms() {
         // set the intraction preference to forms and head back to the referring page (or home if not a referral)
         $this->session->preference = 'forms';
-        if ($this->agent->is_referral()) {
+        if ($this->agent->referrer()) {
             redirect($this->agent->referrer());
         } else {
             $data = [
