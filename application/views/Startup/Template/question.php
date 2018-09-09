@@ -1,0 +1,9 @@
+<?php
+    $this->load->view('/startup/template/header');
+    $this->load->view('/startup/steps/question');
+?>
+    <footer>
+<?php
+        $this->load->view('/startup/template/footer');
+?>
+    </footer>

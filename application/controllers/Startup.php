@@ -19,6 +19,13 @@ class Startup extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+    public function __construct() {
+        
+        parent::__construct();
+        $this->load->model('startup_model');
+        
+    }
+
     public function index() {
         // if the session preference has not been set, start with forms
         $this->session->preference = isset($this->session->preference)?$this->session->preference:'forms';
@@ -50,9 +57,9 @@ class Startup extends CI_Controller {
         $segs = explode('/',uri_string());
         $step = $this->uri->segment(3,0);
         $q = $this->uri->segment(4,0);
-        if(count($segs)>3) { 
-            $ctype = $segs[3];
-            $cdata = $segs[4];
+        if(count($segs)>4) { 
+            $ctype = $segs[4];
+            $cdata = $segs[5];
         } else {
             $ctype = null;
             $cdata = null;            
@@ -78,22 +85,42 @@ class Startup extends CI_Controller {
                     $question = file_get_contents($url['scheme']. '://'.$url['host'].'/startup/steps/1/0');;
                     break;
                 default:
-                    $question = file_get_contents($url['scheme']. '://'.$url['host'].'/startup/steps/'.$step.'/'.$q);
+                    $title = false;
+                    $question = $this->startup_model->question($q);
+                    $qanswers = $this->startup_model->qanswers($q,$url);
+                    $answer = $this->startup_model->answer($q);
+                    $prev = $url['scheme']. '://'.$url['host'].'/startup/step/1/'.($q-1);
+                    $next = $url['scheme']. '://'.$url['host'].'/startup/step/1/'.($q+1);
             }
         } else {
             redirect('/startup/process');
         }
         // display the step page with the relevant data
-        $data = [
-            'v' => 'step',
-            'title' => $title,
-            'sub' => $sub,
-            'step' => $step,
-            'q' => $question,
-            'ctype' => $ctype,
-            'cdata' => $cdata
-        ];            
-		$this->load->view('/startup/index',$data);
+        if($title) {
+            $data = [
+                'v' => 'step',
+                'title' => $title,
+                'sub' => $sub,
+                'step' => $step,
+                'q' => $question,
+                'ctype' => $ctype,
+                'cdata' => $cdata,
+            ];
+        } else {
+            $data = [
+                'v' => 'question',
+                'step' => $step,
+                'qtext' => $question,
+                'qansw' => $qanswers,
+                'atext' => $answer,
+                'prev' => $prev,
+                'next' => $next,
+                'ctype' => $ctype,
+                'cdata' => $cdata
+            ];            
+        }
+        $this->load->view('/startup/index',$data);
+            
 	}
     
     

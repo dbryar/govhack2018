@@ -1,7 +1,7 @@
 <?php
     $this->load->view('startup/template/header');
 ?>
-    <main role="main" class="container">
+    <main role="main" class="container top-margin">
 
       <div class="starter-template">
 <?php

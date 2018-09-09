@@ -47,3 +47,6 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUSRpaf__9ZU3oRljaUlHRA7pXjQJoz9w&libraries=visualization&callback=initMap">
     </script>
+    <script>
+            alert('<?= $atext;?>');
+    </script>
