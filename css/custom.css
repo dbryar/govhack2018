@@ -17,7 +17,7 @@ html, body {
 nav.header {
 	background-color: black;
 	height:80px;
-    margin-top:70px;
+    margin-top:50px;
 	padding:10px 0px;
 	text-align: center;
 	color:white;
@@ -33,7 +33,7 @@ nav .next {
 nav .back,
 nav .next {
 	position:absolute;
-	top:95px;
+	top:65px;
 }
 nav .back a,
 nav .next a {
