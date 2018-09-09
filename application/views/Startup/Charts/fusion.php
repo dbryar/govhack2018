@@ -11,7 +11,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: '/data/funding.json',
+                url: '/data/<?= $cdata?>.json',
                 success:  function(data){
                     console.log('Data retrieved',data);
                     var heatMapData=[];
