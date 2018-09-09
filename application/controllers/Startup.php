@@ -50,8 +50,13 @@ class Startup extends CI_Controller {
         $segs = explode('/',uri_string());
         $step = $this->uri->segment(3,0);
         $q = $this->uri->segment(4,0);
-        $ctype = $segs[3];
-        $cdata = $segs[4];
+        if(count($segs)>3) { 
+            $ctype = $segs[3];
+            $cdata = $segs[4];
+        } else {
+            $ctype = null;
+            $cdata = null;            
+        }
         if($step) {
             $title = 'Step '.$step;
             switch($step) {
@@ -85,7 +90,7 @@ class Startup extends CI_Controller {
             'sub' => $sub,
             'step' => $step,
             'q' => $question,
-            'ctype' => 'fusion',//$ctype,
+            'ctype' => $ctype,
             'cdata' => $cdata
         ];            
 		$this->load->view('/startup/index',$data);
