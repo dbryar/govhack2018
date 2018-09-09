@@ -46,7 +46,12 @@ class Startup extends CI_Controller {
     public function step() {
         // check what step was requested and display that page
         // if no step was specified, handle the null request and use step0.php to redirect to the process page
+        $url = parse_url(current_url());
+        $segs = explode('/',uri_string());
         $step = $this->uri->segment(3,0);
+        $q = $this->uri->segment(4,0);
+        $ctype = $segs[3];
+        $cdata = $segs[4];
         if($step) {
             $title = 'Step '.$step;
             switch($step) {
@@ -63,6 +68,13 @@ class Startup extends CI_Controller {
                     $sub = 'Ongoing Support';
                 break;
             }
+            switch($q) {
+                case 0:
+                    $question = file_get_contents($url['scheme']. '://'.$url['host'].'/startup/steps/1/0');;
+                    break;
+                default:
+                    $question = file_get_contents($url['scheme']. '://'.$url['host'].'/startup/steps/'.$step.'/'.$q);
+            }
         } else {
             redirect('/startup/process');
         }
@@ -71,16 +83,30 @@ class Startup extends CI_Controller {
             'v' => 'step',
             'title' => $title,
             'sub' => $sub,
-            'step' => $step
+            'step' => $step,
+            'q' => $question,
+            'ctype' => 'fusion',//$ctype,
+            'cdata' => $cdata
         ];            
 		$this->load->view('/startup/index',$data);
 	}
+    
+    
+    public function steps() {
+        $step = $this->uri->segment(3,0);
+        $q = $this->uri->segment(4,0);
+        if($q) {
+            $this->load->view('/startup/steps/'.$step.'/'.$q);
+        } else {
+            $this->load->view('/startup/steps/default.html');
+        }
+    }
 
 
     public function chat() {
         // set the intraction preference to chat and head back to the referring page (or home if not a referral)
         $this->session->preference = 'chat';
-        if ($this->agent->is_referral()) {
+        if($this->agent->referrer()) {
             redirect($this->agent->referrer());
         } else {
             $data = [
@@ -96,7 +122,7 @@ class Startup extends CI_Controller {
     public function forms() {
         // set the intraction preference to forms and head back to the referring page (or home if not a referral)
         $this->session->preference = 'forms';
-        if ($this->agent->is_referral()) {
+        if ($this->agent->referrer()) {
             redirect($this->agent->referrer());
         } else {
             $data = [
@@ -108,14 +134,5 @@ class Startup extends CI_Controller {
         }
     }
     
-    
-    public function visuals() {
-        // based on the session data we need to display the relevant data for the question just asked
-        $data = [
-            'v' => 'opp',
-            'title' => 'Opportunity'
-        ];
-        $this->load->view('/startup/chart',$data);
-    }
 
 }
